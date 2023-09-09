@@ -1,0 +1,56 @@
+/* * {
+  box-sizing: border-box;
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 400;
+}
+
+body {
+  height: 100vh;
+  background-color: rgb(149, 149, 196);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  width: 550px;
+  height: auto;
+  padding: 15px;
+  background-color: #ffffff;
+  border: 7px;
+  border-radius: 1rem;
+}
+
+.msg-header {
+  text-align: center;
+}
+
+.bank-name {
+  width: 100%;
+  font-size: 35px;
+  color: gray;
+  text-align: center;
+}
+
+.welcome-text {
+  text-align: center;
+}
+
+.verify-acct-btn {
+  padding: 15px;
+  background-color: blue;
+  margin-left: 35%;
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 1rem;
+}
+
+.copyright {
+  padding: 15px;
+  color: gray;
+  font-size: 12px;
+  margin: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

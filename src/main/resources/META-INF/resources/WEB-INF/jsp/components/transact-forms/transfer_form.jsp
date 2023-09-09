@@ -1,0 +1,33 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+ 
+ 		
+   <!-- transfer money card -->
+          <div class="card transfer-card cardlook hidden">
+              <div class="card-body">
+                <!-- form -->
+                <div class="form-group mb-2">
+                   <label for="">Account Number</label>
+                   <input type="text" name="accountHolder" class="form-control inputlook">
+                </div>
+
+                <div class="form-group mb-2">
+                  <label for="">Reference</label>
+                  <input type="text" name="reference" class="form-control inputlook" >
+               </div>
+
+               <div class="form-group mb-3">
+                <label for="">Enter Amount</label>
+                <input type="text" name="transfer_amount" class="form-control inputlook" >
+             </div>
+
+             <div class="form-group">
+              
+              <button id="transact" class="btn--look">Done</button>
+           </div>
+                <!-- end form -->
+              </div>
+                <!-- end transfer card body-->
+          </div>
+        <!-- end of transact card -->
