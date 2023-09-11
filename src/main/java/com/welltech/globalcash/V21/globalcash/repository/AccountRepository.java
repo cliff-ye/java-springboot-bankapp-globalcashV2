@@ -19,6 +19,10 @@ public interface AccountRepository extends CrudRepository<Account,Integer>{
 	@Transactional
 	Account getUserAccount(@Param("user_id")int user_id);
 	
+	@Query(value="SELECT * FROM accounts WHERE account_number= :account_number", nativeQuery=true)
+	@Transactional
+	Account getUserAcctByAcctNumber(@Param("account_number")String account_number);
+	
 	@Query(value="SELECT account_balance FROM accounts WHERE user_id= :user_id", nativeQuery=true)
 	@Transactional
 	double getUserBalance(@Param("user_id")int user_id);

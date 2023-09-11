@@ -7,25 +7,27 @@
           <div class="card transfer-card cardlook hidden">
               <div class="card-body">
                 <!-- form -->
+                <form action="/transact/transfer" method="post">
                 <div class="form-group mb-2">
                    <label for="">Account Number</label>
-                   <input type="text" name="accountHolder" class="form-control inputlook">
+                   <input type="text" name="accountHolder" class="form-control inputlook" required="required">
                 </div>
 
                 <div class="form-group mb-2">
                   <label for="">Reference</label>
-                  <input type="text" name="reference" class="form-control inputlook" >
+                  <input type="text" name="reference" class="form-control inputlook" required="required">
                </div>
 
                <div class="form-group mb-3">
                 <label for="">Enter Amount</label>
-                <input type="text" name="transfer_amount" class="form-control inputlook" >
+                <input type="text" name="transfer_amount" class="form-control inputlook" required="required">
              </div>
 
              <div class="form-group">
               
               <button id="transact" class="btn--look">Done</button>
            </div>
+           </form>
                 <!-- end form -->
               </div>
                 <!-- end transfer card body-->
