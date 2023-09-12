@@ -101,7 +101,7 @@ public class TransactController {
 		}
 		
 		//TODO: get date transfer date
-		LocalDateTime transferredAt= LocalDateTime.now();
+		//LocalDateTime transferredAt= LocalDateTime.now();
 		
 		//TODO : subtract from current balance and update senders acct balance
 		double sender_current_acc_bal = accountRepository.getUserBalance(sender_account.getUser_id());
@@ -114,7 +114,10 @@ public class TransactController {
 		accountRepository.updateAcctBalance(recipient_new_bal,receipient_account.getAccount_id());
 		
 		
-		redirectAttributes.addFlashAttribute("successmsg","Transfered successfully");
+		String msg = "Transfered successfully to "+receipient_account.getAccount_name()
+						+". Total Amount is GHS "+trans_amount;
+		
+		redirectAttributes.addFlashAttribute("successmsg",msg);
 		return "redirect:/app/dashboard";
 	}
 

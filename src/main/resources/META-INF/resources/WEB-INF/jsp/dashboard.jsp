@@ -76,6 +76,20 @@
  			</div>
  		</c:if>
  		
+ 		<!-- account not existing -->
+ 		<c:if test="${requestScope.userNotFoundError != null}" >
+ 			<div class="alert alert-danger text-center border border-danger">
+ 				<b>${requestScope.userNotFoundError}</b>
+ 			</div>
+ 		</c:if>
+ 		
+ 		<!-- transfer to same account error -->
+ 		<c:if test="${requestScope.transError != null}" >
+ 			<div class="alert alert-danger text-center border border-danger">
+ 				<b>${requestScope.transError}</b>
+ 			</div>
+ 		</c:if>
+ 		
  		<!-- sending zero amount as deposit -->
  		<c:if test="${requestScope.zeroerror != null}" >
  			<div class="alert alert-danger text-center border border-danger">
@@ -90,7 +104,7 @@
  			</div>
  		</c:if>
  		
- 		<!-- successful deposit -->
+ 		<!-- successful  -->
  		<c:if test="${requestScope.successmsg != null}" >
  			<div class="alert alert-success text-center border border-success">
  				<b>${requestScope.successmsg}</b>
