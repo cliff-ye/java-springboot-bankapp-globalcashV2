@@ -19,7 +19,7 @@
                </div>
 
                <div class="form-group mb-3">
-                <label for="">Enter Amount</label>
+                <label for="">Enter Amount(GH&#8373;)</label>
                 <input type="text" name="transfer_amount" class="form-control inputlook" required="required">
              </div>
 

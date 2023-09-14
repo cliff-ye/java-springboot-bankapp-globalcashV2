@@ -38,12 +38,12 @@ public class TransactController {
 		//TODO: GET account id from session
 		Account account = (Account) session.getAttribute("accountLoggedIn");
 		
-		//TODO : Get current account balance
+		//TODO : Get deposit amt balance
 		double deposit_amount = Double.parseDouble(depositAmt);
 		
 		//TODO : Check if deposit amt is a real number
-		if(deposit_amount == 0) {
-			redirectAttributes.addFlashAttribute("zeroerror","Amount must not be zero");
+		if(deposit_amount <= 0) {
+			redirectAttributes.addFlashAttribute("zeroerror","Amount must not be zero or less");
 			return "redirect:/app/dashboard";
 		}
 		
@@ -95,8 +95,8 @@ public class TransactController {
 		double trans_amount = Double.parseDouble(transfer_amount);
 		
 		//TODO : check for zero values
-		if(trans_amount == 0) {
-			redirectAttributes.addFlashAttribute("zeroerror","Amount must not be zero");
+		if(trans_amount <= 0) {
+			redirectAttributes.addFlashAttribute("zeroerror","Amount must not be zero or less");
 			return "redirect:/app/dashboard";
 		}
 		
@@ -119,6 +119,48 @@ public class TransactController {
 		
 		redirectAttributes.addFlashAttribute("successmsg",msg);
 		return "redirect:/app/dashboard";
+	}
+	
+	@PostMapping("/withdraw")
+	public String makeWithdrawal(@RequestParam("amount")String withdrawal_amt,
+								HttpSession session, RedirectAttributes redirectAttributes) {
+		
+		if(withdrawal_amt.isEmpty()) {
+			redirectAttributes.addFlashAttribute("error","field must not be empty");
+			return "redirect:/app/dashboard";
+		}
+			
+			
+		//TODO : get current user from session
+		User user = (User) session.getAttribute("userLoggedIn");
+				
+		// GET account id from session
+		Account account = (Account) session.getAttribute("accountLoggedIn");
+				
+		//convert withdrawal amt
+		double withdrawalAmt = Double.parseDouble(withdrawal_amt);
+		
+		//TODO : Check if deposit amt is a real number
+		if(withdrawalAmt <= 0) {
+			redirectAttributes.addFlashAttribute("zeroerror","Amount must not be zero or less");
+			return "redirect:/app/dashboard";
+		  }
+		
+		//TODO : UPDATE ACCOUNT TABLE
+		double current_acc_bal = accountRepository.getUserBalance(user.getUser_id());
+		double new_balance = current_acc_bal - withdrawalAmt;
+				
+		int res = accountRepository.updateAcctBalance(new_balance,account.getAccount_id());
+				
+		if(res <= 0) {
+		   redirectAttributes.addFlashAttribute("failedmsg","Failed to withdraw");
+		   return "redirect:/app/dashboard";
+		 }
+				
+		 redirectAttributes.addFlashAttribute("successmsg","withdraw successful");
+		 return "redirect:/app/dashboard";
+				
+		
 	}
 
 }

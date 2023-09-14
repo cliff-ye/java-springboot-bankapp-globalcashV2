@@ -5,14 +5,14 @@
     <div class="card withdraw-card cardlook hidden">
       <div class="card-body">
         <!-- form -->
-        <form action="" method="">
-        <div class="form-group mb-3">
-           <label for="">Enter Amount to Withdraw</label>
-           <input type="text" name="amount" class="form-control inputlook">
-        </div>
+        <form action="/transact/withdraw" method="post">
+	        <div class="form-group mb-3">
+	           <label for="">Enter Amount to Withdraw(GH&#8373;)</label>
+	           <input type="text" name="amount" class="form-control inputlook" required="required">
+	        </div>
 
-     <div class="form-group ">
-      <button id="transact" class="btn--look">Done</button>
+     	<div class="form-group ">
+     	 <button id="transact" class="btn--look">Done</button>
    </div>
   </form>
         <!-- end form -->
