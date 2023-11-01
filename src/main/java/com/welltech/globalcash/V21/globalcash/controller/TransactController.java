@@ -105,6 +105,12 @@ public class TransactController {
 		
 		//TODO : subtract from current balance and update senders acct balance
 		double sender_current_acc_bal = accountRepository.getUserBalance(sender_account.getUser_id());
+		
+		if(sender_current_acc_bal < trans_amount) {
+			redirectAttributes.addFlashAttribute("insufficientFunds","Insufficient funds to perform transfer");
+			return "redirect:/app/dashboard";
+		}
+		
 		double sender_new_acct_bal = sender_current_acc_bal - trans_amount;
 		accountRepository.updateAcctBalance(sender_new_acct_bal,sender_account.getAccount_id());
 		
@@ -148,6 +154,12 @@ public class TransactController {
 		
 		//TODO : UPDATE ACCOUNT TABLE
 		double current_acc_bal = accountRepository.getUserBalance(user.getUser_id());
+		
+		if(current_acc_bal < withdrawalAmt) {
+			redirectAttributes.addFlashAttribute("insufficientFunds","Insufficient funds to perform withdrawal");
+			return "redirect:/app/dashboard";
+		}
+		
 		double new_balance = current_acc_bal - withdrawalAmt;
 				
 		int res = accountRepository.updateAcctBalance(new_balance,account.getAccount_id());

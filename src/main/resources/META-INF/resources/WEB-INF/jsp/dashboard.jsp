@@ -104,6 +104,13 @@
  			</div>
  		</c:if>
  		
+ 		<!-- insufficient funds -->
+ 		<c:if test="${requestScope.insufficientFunds != null}" >
+ 			<div class="alert alert-danger text-center border border-danger">
+ 				<b>${requestScope.insufficientFunds}</b>
+ 			</div>
+ 		</c:if>
+ 		
  		<!-- successful  -->
  		<c:if test="${requestScope.successmsg != null}" >
  			<div class="alert alert-success text-center border border-success">
@@ -149,10 +156,10 @@
             <div class="col-lg-3 order-3 order-md-3 cards">
               <div class="card info-card withdrawal-card">
                 <div class="card-body">
-                  <h5 class="card-title">Total Withdrawals</h5>
+                  <h5 class="card-title">Total transfers</h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon ">
-                      <img src="../assets/images/icons8_withdrawal.ico" alt="">
+                      <img src="../assets/images/icons8_Credit_Card_Transfer.ico" alt="">
                     </div>
                     <div class="ps-3">
                       <h6 class="totalwithd">GH&#8373; 3,264</h6>

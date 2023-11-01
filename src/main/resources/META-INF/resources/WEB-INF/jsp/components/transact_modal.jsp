@@ -11,7 +11,10 @@
           <select name="transact-type" class="form-control inputlook mb-3" id="transact-type">
             <option value="">--Select Transaction Type --</option>
             <!-- <option value="payment">Payment</option> -->
-            <option value="transfer">Transfer</option>
+            <option value="transfer">Transfer to GC user</option>
+            <option value="transfer-nongc">Transfer to non GC user</option>
+            <option value="airtime">Airtime</option>
+            <option value="bank-trans">Bank transfer</option>
             <option value="deposit">Deposit</option>
             <option value="withdraw">Withdraw</option>
           </select>
