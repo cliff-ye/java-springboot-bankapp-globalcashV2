@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.welltech.globalcash.V21.globalcash.model.Account;
+import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import com.welltech.globalcash.V21.globalcash.model.User;
 
 @ControllerAdvice
@@ -19,4 +20,8 @@ public class ControllerAdvisor {
 		return new Account();
 	}
 
+//	@ModelAttribute("transactionHistory")
+//	public TransactionHistory getTransactionHistoryBean() {
+//		return new TransactionHistory();
+//	}
 }

@@ -4,14 +4,17 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.welltech.globalcash.V21.globalcash.model.Account;
+import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import com.welltech.globalcash.V21.globalcash.model.User;
 import com.welltech.globalcash.V21.globalcash.repository.AccountRepository;
+import com.welltech.globalcash.V21.globalcash.repository.TransactionHistoryRepo;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,7 +24,10 @@ public class TransactController {
 	
 	@Autowired
 	private AccountRepository accountRepository;
+	@Autowired
+	private TransactionHistoryRepo transactionHistoryRepo;
 	
+	LocalDateTime createdAt= LocalDateTime.now();
 	@PostMapping("/deposit")
 	public String makeDeposit(@RequestParam("amount")String depositAmt,
 							  HttpSession session, RedirectAttributes redirectAttributes) {
@@ -57,6 +63,7 @@ public class TransactController {
 			redirectAttributes.addFlashAttribute("failedmsg","Failed to deposit");
 			return "redirect:/app/dashboard";
 		}
+		int logResult = transactionHistoryRepo.logTransaction(account.getAccount_id(), "deposit", deposit_amount, "success", "deposited successfully", createdAt);
 		
 		redirectAttributes.addFlashAttribute("successmsg","Deposited successfully");
 		return "redirect:/app/dashboard";
@@ -118,8 +125,7 @@ public class TransactController {
 		double recipient_current_bal = accountRepository.getUserBalance(receipient_account.getUser_id());
 		double recipient_new_bal = recipient_current_bal + trans_amount;
 		accountRepository.updateAcctBalance(recipient_new_bal,receipient_account.getAccount_id());
-		
-		
+				
 		String msg = "Transfered successfully to "+receipient_account.getAccount_name()
 						+". Total Amount is GHS "+trans_amount;
 		
@@ -156,6 +162,7 @@ public class TransactController {
 		double current_acc_bal = accountRepository.getUserBalance(user.getUser_id());
 		
 		if(current_acc_bal < withdrawalAmt) {
+			transactionHistoryRepo.logTransaction(account.getAccount_id(), "withdrawal", -withdrawalAmt, "failed", "insufficient Funds", createdAt);
 			redirectAttributes.addFlashAttribute("insufficientFunds","Insufficient funds to perform withdrawal");
 			return "redirect:/app/dashboard";
 		}
@@ -163,12 +170,15 @@ public class TransactController {
 		double new_balance = current_acc_bal - withdrawalAmt;
 				
 		int res = accountRepository.updateAcctBalance(new_balance,account.getAccount_id());
+		
 				
 		if(res <= 0) {
 		   redirectAttributes.addFlashAttribute("failedmsg","Failed to withdraw");
 		   return "redirect:/app/dashboard";
 		 }
-				
+			
+		transactionHistoryRepo.logTransaction(account.getAccount_id(), "withdrawal", -withdrawalAmt, "success", "withdrawal successful", createdAt);
+		
 		 redirectAttributes.addFlashAttribute("successmsg","withdraw successful");
 		 return "redirect:/app/dashboard";
 				

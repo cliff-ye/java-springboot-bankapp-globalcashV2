@@ -130,7 +130,7 @@
                       <img src="../assets/images/icons8_total_sales.ico" alt="">
                     </div>
                     <div class="ps-3">
-                      <h6 class="totaldep">GH&#8373; 3,264</h6>
+                      <h6 class="totaldep">GH&#8373; ${totalDeps}</h6>
                     </div>
                   </div>
                 </div>
@@ -146,7 +146,7 @@
                       <img src="../assets/images/icons8_withdrawal.ico" alt="">
                     </div>
                     <div class="ps-3">
-                      <h6 class="totalwithd">GH&#8373; 3,264</h6>
+                      <h6 class="totalwithd">GH&#8373; ${totalWithd}</h6>
                     </div>
                   </div>
                 </div>
