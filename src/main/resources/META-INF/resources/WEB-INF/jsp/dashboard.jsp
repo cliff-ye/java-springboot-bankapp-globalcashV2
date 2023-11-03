@@ -162,7 +162,7 @@
                       <img src="../assets/images/icons8_Credit_Card_Transfer.ico" alt="">
                     </div>
                     <div class="ps-3">
-                      <h6 class="totalwithd">GH&#8373; 3,264</h6>
+                      <h6 class="totalwithd">GH&#8373; ${totalTransfer}</h6>
                     </div>
                   </div>
                 </div>

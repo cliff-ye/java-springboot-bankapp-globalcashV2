@@ -15,6 +15,7 @@ import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import com.welltech.globalcash.V21.globalcash.model.User;
 import com.welltech.globalcash.V21.globalcash.repository.AccountRepository;
 import com.welltech.globalcash.V21.globalcash.repository.TransactionHistoryRepo;
+import com.welltech.globalcash.V21.globalcash.repository.TransferHistoryRepo;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -26,6 +27,15 @@ public class TransactController {
 	private AccountRepository accountRepository;
 	@Autowired
 	private TransactionHistoryRepo transactionHistoryRepo;
+	@Autowired
+	private TransferHistoryRepo transferHistoryRepo;
+	
+	public TransactController(AccountRepository accountRepository,TransactionHistoryRepo transactionHistoryRepo,
+			TransferHistoryRepo transferHistoryRepo) {
+		this.accountRepository = accountRepository;
+		this.transactionHistoryRepo=transactionHistoryRepo;
+		this.transferHistoryRepo=transferHistoryRepo;
+	}
 	
 	LocalDateTime createdAt= LocalDateTime.now();
 	@PostMapping("/deposit")
@@ -114,6 +124,7 @@ public class TransactController {
 		double sender_current_acc_bal = accountRepository.getUserBalance(sender_account.getUser_id());
 		
 		if(sender_current_acc_bal < trans_amount) {
+			transferHistoryRepo.logTransfers(sender_account.getAccount_id(), receipient_account.getAccount_name(), receipient_account.getAccount_number(), trans_amount, reference, "failed", "insufficient Funds", createdAt);
 			redirectAttributes.addFlashAttribute("insufficientFunds","Insufficient funds to perform transfer");
 			return "redirect:/app/dashboard";
 		}
@@ -125,7 +136,9 @@ public class TransactController {
 		double recipient_current_bal = accountRepository.getUserBalance(receipient_account.getUser_id());
 		double recipient_new_bal = recipient_current_bal + trans_amount;
 		accountRepository.updateAcctBalance(recipient_new_bal,receipient_account.getAccount_id());
-				
+		
+		transferHistoryRepo.logTransfers(sender_account.getAccount_id(), receipient_account.getAccount_name(), receipient_account.getAccount_number(), trans_amount, reference, "success", "Transfer successful", createdAt);
+		
 		String msg = "Transfered successfully to "+receipient_account.getAccount_name()
 						+". Total Amount is GHS "+trans_amount;
 		

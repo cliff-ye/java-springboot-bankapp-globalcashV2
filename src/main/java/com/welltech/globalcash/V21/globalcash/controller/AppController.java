@@ -12,6 +12,7 @@ import com.welltech.globalcash.V21.globalcash.model.Account;
 import com.welltech.globalcash.V21.globalcash.model.User;
 import com.welltech.globalcash.V21.globalcash.repository.AccountRepository;
 import com.welltech.globalcash.V21.globalcash.repository.TransactionHistoryRepo;
+import com.welltech.globalcash.V21.globalcash.repository.TransferHistoryRepo;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -25,9 +26,14 @@ public class AppController {
 	@Autowired
 	private TransactionHistoryRepo transactionHistoryRepo;
 	
-	public AppController(AccountRepository accountRepository,TransactionHistoryRepo transactionHistoryRepo) {
+	@Autowired
+	private TransferHistoryRepo transferHistoryRepo;
+	
+	public AppController(AccountRepository accountRepository,TransactionHistoryRepo transactionHistoryRepo,
+			TransferHistoryRepo transferHistoryRepo) {
 		this.accountRepository = accountRepository;
 		this.transactionHistoryRepo=transactionHistoryRepo;
+		this.transferHistoryRepo = transferHistoryRepo;
 	}
 	
 	@GetMapping("/dashboard")
@@ -53,11 +59,14 @@ public class AppController {
 		//DISPLAY TOTAL DEPOSITS
 		double totalWithdrawals = Math.abs(transactionHistoryRepo.getTotalWithdrawals(0,account.getAccount_id(),"success")) ;
 		
-//		//TODO: add objects to dashboard
+		double totalTransfers = transferHistoryRepo.getTotalTransfers(account.getAccount_id(), "success");
+//		
+		//TODO: add objects to dashboard
 		getDashboardPage.addObject("userAcct", account);
 		getDashboardPage.addObject("totalAcctBal",totalAcctBalance);
 		getDashboardPage.addObject("totalDeps",totalDeposits);
 		getDashboardPage.addObject("totalWithd",totalWithdrawals);
+		getDashboardPage.addObject("totalTransfer",totalTransfers);
 		
 		return getDashboardPage;
 	}
