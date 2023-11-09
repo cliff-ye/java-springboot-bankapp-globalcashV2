@@ -21,7 +21,7 @@
   </head>
   <body>
     <!-- ======= Header ======= -->
-    <header id="header" bg-img bg-cover" style="background-image: url('assets/images/denise-bossarte-8rEJiVQk1Vw-unsplash.jpg')">
+    <header id="header" bg-img bg-cover" style="background-image: url('assets/images/moja-msanii-vO9-gal54go-unsplash.jpg')">
       <div class="container d-flex align-items-center">
         <h1 class="logo me-auto">
           <a href="/index"

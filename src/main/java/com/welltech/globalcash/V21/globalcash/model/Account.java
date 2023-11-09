@@ -20,7 +20,7 @@ public class Account {
 	private String account_name;
 	@NotEmpty
 	private String account_type;
-	private BigDecimal account_balance;
+	private double account_balance=0.00;
 	private LocalDateTime created_at;
 	private LocalDateTime updated_at;
 	
@@ -54,10 +54,10 @@ public class Account {
 	public void setAccount_type(String account_type) {
 		this.account_type = account_type;
 	}
-	public BigDecimal getAccount_balance() {
+	public double getAccount_balance() {
 		return account_balance;
 	}
-	public void setAccount_balance(BigDecimal account_balance) {
+	public void setAccount_balance(double account_balance) {
 		this.account_balance = account_balance;
 	}
 	public LocalDateTime getCreated_at() {

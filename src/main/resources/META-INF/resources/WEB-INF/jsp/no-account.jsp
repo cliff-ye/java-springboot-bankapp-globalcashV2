@@ -30,7 +30,7 @@
       }
     </style>
   </head>
-  <body class="" bg-img bg-cover" style="background-image: url('assets/images/denise-bossarte-8rEJiVQk1Vw-unsplash.jpg')"">
+  <body class="" bg-img bg-cover" style="background: linear-gradient(to top left, #f7971e, #ffd200)"">
     <section id="hero" class="d-flex align-items-center ">
         <div class="container">
           <div class="row">

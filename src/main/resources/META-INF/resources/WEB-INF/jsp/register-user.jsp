@@ -48,39 +48,46 @@
         </h1>
    		
         <div class="row">
-        <div class="col mb-3">
-          <form:label path="first_name" class="form-label">Firstname*</form:label>
-          <form:input type="text" path="first_name" class="form-control inputlook input--firstname" required="required" />   
-          <form:errors path="first_name" cssClass="text-danger" />
-        </div>
-
-        <div class="col mb-3">
-          <form:label path="last_name" class="form-label">Lastname*</form:label>
-          <form:input type="text" path="last_name" class="form-control inputlook input--lastname" required="required" />
-          <form:errors path="last_name" cssClass="text-danger" />
-        </div>
+	        <div class="col mb-3">
+	          <form:label path="first_name" class="form-label">Firstname*</form:label>
+	          <form:input type="text" path="first_name" class="form-control inputlook input--firstname" required="required" />   
+	          <form:errors path="first_name" cssClass="text-danger" />
+	        </div>
+	
+	        <div class="col mb-3">
+	          <form:label path="last_name" class="form-label">Lastname*</form:label>
+	          <form:input type="text" path="last_name" class="form-control inputlook input--lastname" required="required" />
+	          <form:errors path="last_name" cssClass="text-danger" />
+	        </div>
       </div>
-
-        <div class="mb-3">
-          <form:label path="email" class="form-label">Email*</form:label>
-          <form:input type="email" path="email" class="form-control inputlook input--email"  required="required"/>
-          <form:errors path="email" cssClass="text-danger" />
+      
+      <div class="row">
+	      <div class="col mb-3">
+	          <form:label path="phone" class="form-label">Phone*</form:label>
+	          <form:input type="text" path="phone" class="form-control inputlook input--phone" required="required" />
+	          <form:errors path="phone" cssClass="text-danger" />
+	        </div>
+	
+	        <div class="col mb-3">
+	          <form:label path="email" class="form-label">Email*</form:label>
+	          <form:input type="email" path="email" class="form-control inputlook input--email"  required="required"/>
+	          <form:errors path="email" cssClass="text-danger" />
+	        </div>
         </div>
         
         <div class="row">
-    
-        <div class="col mb-3">
-          <form:label path="email" class="form-label">Password*</form:label>
-          <form:input type="password" path="password" class="form-control inputlook input--password" required="required"/>
-          <form:errors path="password" cssClass="text-danger" />
-        </div>
-        
-        
-        <div class="col mb-3">
-          <label for="confirm_password" class="form-label">Confirm Password*</label>
-          <input type="password" class="form-control inputlook input--confirm_password" id="confirm_password" name="confirm_password"  />
-          <small class="text-white">${confirm_pass}</small>
-        </div>
+	        <div class="col mb-3">
+	          <form:label path="email" class="form-label">Password*</form:label>
+	          <form:input type="password" path="password" class="form-control inputlook input--password" required="required"/>
+	          <form:errors path="password" cssClass="text-danger" />
+	        </div>
+	        
+	        
+	        <div class="col mb-3">
+	          <label for="confirm_password" class="form-label">Confirm Password*</label>
+	          <input type="password" class="form-control inputlook input--confirm_password" id="confirm_password" name="confirm_password"  />
+	          <small class="text-white">${confirm_pass}</small>
+	        </div>
       </div>
 
         <div class="mb-3">

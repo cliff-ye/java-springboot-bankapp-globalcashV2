@@ -32,13 +32,14 @@ public interface AccountRepository extends CrudRepository<Account,Integer>{
 	String getAcctNumber(@Param("user_id")Integer user_id);
 	
 	@Modifying
-	@Query(value="INSERT INTO accounts(user_id,account_number,account_name,account_type,created_at)"
-			+ "VALUES(:user_id, :account_number, :account_name, :account_type, :created_at)", nativeQuery=true)
+	@Query(value="INSERT INTO accounts(user_id,account_number,account_name,account_type,account_balance,created_at)"
+			+ "VALUES(:user_id, :account_number, :account_name, :account_type, :account_balance, :created_at)", nativeQuery=true)
 	@Transactional
 	Integer addAccount(@Param("user_id") int user_id,
 					   @Param("account_number") String account_number,
 					   @Param("account_name") String account_name,
 					   @Param("account_type") String account_type,
+					   @Param("account_balance") double account_balance,
 					   @Param("created_at") LocalDateTime created_at);
 	
 	@Modifying

@@ -17,6 +17,8 @@ import com.welltech.globalcash.V21.globalcash.helper.GenerateAcctNumber;
 import com.welltech.globalcash.V21.globalcash.model.Account;
 import com.welltech.globalcash.V21.globalcash.model.User;
 import com.welltech.globalcash.V21.globalcash.repository.AccountRepository;
+import com.welltech.globalcash.V21.globalcash.repository.TransactionHistoryRepo;
+import com.welltech.globalcash.V21.globalcash.repository.TransferHistoryRepo;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
@@ -26,6 +28,10 @@ public class RegisterAccountController {
 	
 	@Autowired
 	private AccountRepository accountRepository;
+	@Autowired
+	private TransactionHistoryRepo transactionHistoryRepo;
+	@Autowired
+	private TransferHistoryRepo transferHistoryRepo;
 	
 	@GetMapping("/reg-acct")
 	public String showRegisterAccount() {
@@ -53,9 +59,13 @@ public class RegisterAccountController {
         LocalDateTime createdAt= LocalDateTime.now();
         
         //TODO : ADD ACCOUNT
-        int res = accountRepository.addAccount(user.getUser_id(),setAcctNumber,account.getAccount_name(),account.getAccount_type(),createdAt);
+        int res = accountRepository.addAccount(user.getUser_id(),setAcctNumber,account.getAccount_name(),account.getAccount_type(),account.getAccount_balance(),createdAt);
 		
         if(res == 1) {
+        	account = accountRepository.getUserAcctByAcctNumber(setAcctNumber);
+        	
+        	transactionHistoryRepo.logTransaction(account.getAccount_id(), "deposit", account.getAccount_balance(), "success", "activation deposit", createdAt);
+        	transferHistoryRepo.logTransfers(account.getAccount_id(),account.getAccount_name(), setAcctNumber, account.getAccount_balance(), "activation", "success", "activation", createdAt);
         	return "redirect:/reg-acc-success";
         }
         else {

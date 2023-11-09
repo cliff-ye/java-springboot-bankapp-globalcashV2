@@ -27,8 +27,8 @@
   </head>
   
   <body>
-    <div class="mainDiv" bg-img bg-cover" style="background-image: url('../assets/images/denise-bossarte-8rEJiVQk1Vw-unsplash.jpg')">
-      <header class="header">
+    <div class="mainDiv" >
+      <header class="header" bg-img bg-cover" style="background-image: url('../assets/images/moja-msanii-vO9-gal54go-unsplash1.jpg')">
         <nav id="main-navbar" class="navbar navbar-dark navbar-expand-md">
           <div class="container-fluid">
             <a class="navbar-brand ms-5" href="#"
@@ -52,7 +52,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav ms-auto">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a id="customer-name" class="nav-link active" aria-current="page" href="#">
                   <img
                     src="../assets/images/icons8_male_user_30px.png"
                     alt="Profile"
@@ -197,7 +197,7 @@
                 <img src="../assets/images/icons8_wallet.ico" alt="" />
                 <p>
                  transact <br />
-                  keep your money safe
+                   make safe transactions
                 </p>
               </button>
             </div>
@@ -207,7 +207,7 @@
             <div class="text-center d-lg-block mt-5">
               <button class="btn" data-tab="2">
                 <img src="../assets/images/icons8_payment_history.ico" alt="" />
-                <p>Transfer History <br />take money with us ease</p>
+                <p>Transfer History <br />all transfers to other accounts</p>
               </button>
             </div>
           </div>
@@ -218,7 +218,7 @@
                 <img src="../assets/images/icons8_transaction_1.ico" alt="" />
                 <p>
                   Transaction History <br />
-                  send money in a flash
+                   all transactions on account
                 </p>
               </button>
             </div>
@@ -230,7 +230,7 @@
                 <img src="../assets/images/icons8_account.ico" alt="" />
                 <p>
                    Account <br />
-                  see all your transactions
+                   see account details here
                 </p>
               </button>
             </div>
@@ -242,11 +242,25 @@
   
    <!-- TRANSACT MODAL HERE -->
 	<c:import url="components/transact_modal.jsp" />
+	
+	<!-- ALL TRANSFERS DISPLAY DETAILS HERE -->
+   <c:import url="components/alltransfers_modal.jsp" />
+   
+     <!-- ALL TRANSACTIONS DISPLAY DETAILS HERE -->
+   <c:import url="components/alltransactions_modal.jsp" />
     
 	<!-- ACCOUNT DISPLAY DETAILS HERE -->
    <c:import url="components/account_display.jsp" />
+   
 
     <div class="overlay hidden"></div>
+    
+     <footer class="footer">
+      <div class="container-fluid">
+        cliff-ye
+        <img src="../assets/images/icons8_GitHub.ico" alt="">
+      </div>
+    </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/main.js"></script>

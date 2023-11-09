@@ -11,6 +11,8 @@ body {
 .header {
   /* background-color: #ffff; */
   height: 50vh;
+  border-radius: 1.5rem;
+  margin: 10px 15px 0;
 }
 
 #main-navbar .navbar-brand {
@@ -56,10 +58,12 @@ body {
 }
 .dashboard .info-card h5 {
   color: #444;
+ 
 }
 .dashboard .info-card h6 {
   font-size: 28px;
   color: #444;
+ 
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -69,9 +73,23 @@ body {
 .withdrawal-card,
 .balance-card {
   background-image: linear-gradient(to top left, #f7971e, #ffd200);
+   /*background-color: rgba(255, 255, 255, 0.7); */
   /* background-color: #f29727; */
   color: white;
   border: none;
+}
+
+.user-card {
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  color: #444;
+}
+
+#customer-name {
+  background-color: rgba(0, 0, 0, 0.7);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
 }
 
 .items {
@@ -107,12 +125,12 @@ body {
 .btn--look {
   width: 100%;
   border-radius: 1rem;
-  background-color: #f24c3d;
+  background-color: #1a5d1a;
   color: #ffffff;
   border: none;
 }
 .btn--look:hover {
-  background-color: #ff0060;
+  background-color: #1a5d1a;
 }
 .inputlook {
   border-radius: 1rem;
@@ -150,8 +168,15 @@ body {
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
   /* background-image: linear-gradient(to top left, #f7971e, #ffd200); */
-  background-image: url("../images/denise-bossarte-8rEJiVQk1Vw-unsplash.jpg");
+  background-image: linear-gradient(to top left, #f7971e, #ffd200);
 }
+
+.Alltransactions,
+.Alltransfers {
+  width: 90%;
+  overflow-y: scroll;
+}
+
 
 .btnClose {
   position: absolute;
@@ -175,13 +200,23 @@ body {
     margin-top: 5rem;
   }
   .loginModal {
-    width: 100%;
+    width: 95%;
   }
   .featuresModal {
-    width: 100%;
+    width: 95%;
+    top: 59%;
+    overflow-y: scroll;
   }
   .overlay {
     height: 100vh;
+  }
+   .user-card {
+    /* height: 10vh; */
+    display: none;
+  }
+  
+   .footer {
+    display: none;
   }
 }
 
@@ -203,3 +238,14 @@ body {
 .out{
 	
 }
+
+.footer {
+  color: #ffffff;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  background-image: linear-gradient(to top left, #f94c10, #900c3f);
+  text-align: center;
+}
+

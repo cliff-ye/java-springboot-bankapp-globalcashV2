@@ -27,7 +27,7 @@ public interface TransactionHistoryRepo extends CrudRepository<TransactionHistor
 						   @Param("status_detail") String status_detail,
 						   @Param("created_at") LocalDateTime created_at);
 	
-	@Query(value="SELECT SUM(amount) FROM transaction_history WHERE amount> :amount_limit and account_id=:account_id and status=:status", nativeQuery=true)
+	@Query(value="SELECT SUM(amount) FROM transaction_history WHERE amount>= :amount_limit and account_id=:account_id and status=:status", nativeQuery=true)
 	@Transactional
 	Double getTotalDeposits(@Param("amount_limit")Integer amount_limit,
 							@Param("account_id")Integer account_id,

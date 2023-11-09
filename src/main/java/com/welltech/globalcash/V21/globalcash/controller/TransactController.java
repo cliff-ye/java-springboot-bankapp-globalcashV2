@@ -1,6 +1,7 @@
 package com.welltech.globalcash.V21.globalcash.controller;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.welltech.globalcash.V21.globalcash.helper.SMS;
 import com.welltech.globalcash.V21.globalcash.model.Account;
 import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import com.welltech.globalcash.V21.globalcash.model.User;
@@ -29,15 +32,20 @@ public class TransactController {
 	private TransactionHistoryRepo transactionHistoryRepo;
 	@Autowired
 	private TransferHistoryRepo transferHistoryRepo;
+	@Autowired
+	private SMS sms;
+	
 	
 	public TransactController(AccountRepository accountRepository,TransactionHistoryRepo transactionHistoryRepo,
-			TransferHistoryRepo transferHistoryRepo) {
+			TransferHistoryRepo transferHistoryRepo,RestTemplate restTemplate) {
 		this.accountRepository = accountRepository;
 		this.transactionHistoryRepo=transactionHistoryRepo;
 		this.transferHistoryRepo=transferHistoryRepo;
+		this.sms = sms;
 	}
 	
 	LocalDateTime createdAt= LocalDateTime.now();
+	DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");  
 	@PostMapping("/deposit")
 	public String makeDeposit(@RequestParam("amount")String depositAmt,
 							  HttpSession session, RedirectAttributes redirectAttributes) {
@@ -73,6 +81,12 @@ public class TransactController {
 			redirectAttributes.addFlashAttribute("failedmsg","Failed to deposit");
 			return "redirect:/app/dashboard";
 		}
+		
+//		String apiUrl = "https://sms.nalosolutions.com/smsbackend/clientapi/Resl_Nalo/send-message/?username=cliff_ye&password=cliff20$$$&type=0&destination=233546571831&dlr=1&source=GBL-C+ALERT&message=Deposited+successfully+globalcash";
+//		restTemplate.getForObject(apiUrl, String.class);
+		String message = "Hi "+user.getFirst_name()+"\nYour account has been credited GHS "+deposit_amount+"\nDate: "+createdAt.format(format)+"\nBal: GHS "+new_balance;
+		sms.sendSMS(user.getPhone(), message);
+		
 		int logResult = transactionHistoryRepo.logTransaction(account.getAccount_id(), "deposit", deposit_amount, "success", "deposited successfully", createdAt);
 		
 		redirectAttributes.addFlashAttribute("successmsg","Deposited successfully");

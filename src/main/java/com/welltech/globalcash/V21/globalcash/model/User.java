@@ -22,6 +22,8 @@ public class User {
 	@NotEmpty
 	private String last_name;
 	@NotEmpty
+	private String phone;
+	@NotEmpty
 	@Email
 	private String email;
 	@NotEmpty
@@ -49,6 +51,12 @@ public class User {
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -74,12 +82,14 @@ public class User {
 	public void setUpdated_at(LocalDateTime updated_at) {
 		this.updated_at = updated_at;
 	}
-	
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
-				+ email + ", password=" + password + ", created_at=" + created_at + ", updated_at=" + updated_at + "]";
+		return "User [user_id=" + user_id + ", first_name=" + first_name + ", last_name=" + last_name + ", phone="
+				+ phone + ", email=" + email + ", password=" + password + ", created_at=" + created_at + ", updated_at="
+				+ updated_at + "]";
 	}
+	
+	
 	
 	
 	

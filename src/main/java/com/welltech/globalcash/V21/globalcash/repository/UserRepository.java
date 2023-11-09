@@ -17,11 +17,12 @@ public interface UserRepository extends CrudRepository<User, Integer>{
 	
 	//insert into users
 	@Modifying
-	@Query(value="INSERT INTO users (first_name, last_name, email, password, created_at) VALUES"
-			+ "(:first_name, :last_name, :email, :password, :created_at)", nativeQuery=true )
+	@Query(value="INSERT INTO users (first_name, last_name,phone, email, password, created_at) VALUES"
+			+ "(:first_name, :last_name, :phone, :email, :password, :created_at)", nativeQuery=true )
 	@Transactional
 	Integer addUser(@Param("first_name")String first_name,
 			     @Param("last_name")String last_name,
+			     @Param("phone")String phone,
 			     @Param("email")String email,
 			     @Param("password")String password,
 			     @Param("created_at")LocalDateTime created_at);

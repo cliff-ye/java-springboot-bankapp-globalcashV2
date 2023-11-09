@@ -25,7 +25,7 @@
 
              <div class="form-group">
               
-              <button id="transact" class="btn--look">Done</button>
+              <button id="transact" class="btn--look">Send</button>
            </div>
            </form>
                 <!-- end form -->

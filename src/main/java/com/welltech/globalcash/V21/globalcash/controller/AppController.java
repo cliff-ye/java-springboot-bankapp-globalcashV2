@@ -54,13 +54,13 @@ public class AppController {
 		double totalAcctBalance = accountRepository.getUserBalance(user.getUser_id());
 		
 		//DISPLAY TOTAL DEPOSITS
-		double totalDeposits =transactionHistoryRepo.getTotalDeposits(0,account.getAccount_id(),"success") ;
-		
+		double totalDeposits = transactionHistoryRepo.getTotalDeposits(0,account.getAccount_id(),"success");
+			
 		//DISPLAY TOTAL DEPOSITS
-		double totalWithdrawals = Math.abs(transactionHistoryRepo.getTotalWithdrawals(0,account.getAccount_id(),"success")) ;
-		
-		double totalTransfers = transferHistoryRepo.getTotalTransfers(account.getAccount_id(), "success");
-//		
+		double totalWithdrawals = Math.abs(transactionHistoryRepo.getTotalWithdrawals(1,account.getAccount_id(),"success"));
+			
+		double totalTransfers= transferHistoryRepo.getTotalTransfers(account.getAccount_id(), "success");
+					
 		//TODO: add objects to dashboard
 		getDashboardPage.addObject("userAcct", account);
 		getDashboardPage.addObject("totalAcctBal",totalAcctBalance);

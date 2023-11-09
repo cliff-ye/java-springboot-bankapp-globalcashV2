@@ -61,7 +61,7 @@
               
             <form action="/login" method="post">
               
-              <div class="mb-3">
+              <div class="mb-1">
                 <label for="email" class="form-label">Email</label>
                 <input type="text" class="form-control inputlook input--username" id="email" name="email"/>
               </div>

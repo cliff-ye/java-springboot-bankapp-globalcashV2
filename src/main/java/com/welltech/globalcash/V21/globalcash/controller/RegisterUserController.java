@@ -62,7 +62,7 @@ public class RegisterUserController {
          LocalDateTime createdAt= LocalDateTime.now();
 		
 		//TODO : REGISTER USER
-		int res = userRepository.addUser(user.getFirst_name(), user.getLast_name(), user.getEmail(), hashed_password,createdAt);
+		int res = userRepository.addUser(user.getFirst_name(), user.getLast_name(), user.getPhone(), user.getEmail(), hashed_password,createdAt);
 	
 		//TODO : CHECK IF IT WENT TO INTO DB
 		if(res == 1) {

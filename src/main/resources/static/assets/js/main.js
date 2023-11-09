@@ -10,6 +10,10 @@ const accountModal = document.querySelector(".accountModal");
 const closeAcctModal = document.querySelector(".closeAcctModal");
 const transactModal = document.querySelector(".transactModal");
 const closeTransact = document.querySelector(".closeTransact");
+const Alltransfers = document.querySelector(".Alltransfers");
+const closeAlltransfers = document.querySelector(".closeAlltransfers");
+const Alltransactions = document.querySelector(".Alltransactions");
+const closeAlltransact = document.querySelector(".closeAlltransact");
 
 //add feature btn events-event delegation
 featuresBtn.addEventListener("click", function (e) {
@@ -39,8 +43,24 @@ const closeMe = function (modal, btn) {
     hideOverlay();
   });
 };
+
+const closeByOverlay = function (modal) {
+  overlay.addEventListener("click", function (e) {
+    e.preventDefault();
+    modal.classList.add("hidden");
+    hideOverlay();
+  });
+};
+
 closeMe(accountModal, closeAcctModal);
 closeMe(transactModal, closeTransact);
+closeMe(Alltransfers, closeAlltransfers);
+closeMe(Alltransactions, closeAlltransact);
+
+closeByOverlay(accountModal);
+closeByOverlay(transactModal);
+closeByOverlay(Alltransfers);
+closeByOverlay(Alltransactions);
 
 transactType.addEventListener("change", function (e) {
 	e.preventDefault();
