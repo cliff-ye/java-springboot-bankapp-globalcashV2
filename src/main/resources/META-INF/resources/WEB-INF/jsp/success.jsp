@@ -21,17 +21,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
-      window.addEventListener("load", function () {
+     
         Swal.fire({
           title: "Login successfully",
           icon: "success",
-          showCloseButton: false,
-          showCancelButton: false,
-          focusConfirm: false,
-          confirmButtonText:
-            '<a style="color:white; text-decoration:none" href="/no-acct"> ok</a>',
+          showConfirmButton: false,
+          timer:3000
+        }).then(function (result){
+        	if(true){
+        		 window.location = "/no-acct";
+        	}
         });
-      });
+
     </script>
   </body>
 </html>

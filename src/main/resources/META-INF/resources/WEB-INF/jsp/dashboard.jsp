@@ -71,49 +71,49 @@
         <div class="container">
 	<!-- sending empty fields message -->
  		<c:if test="${requestScope.error != null}" >
- 			<div class="alert alert-danger text-center border border-danger">
+ 			<div class="alert alert-danger text-center border border-danger mb-0">
  				<b>${requestScope.error}</b>
  			</div>
  		</c:if>
  		
  		<!-- account not existing -->
  		<c:if test="${requestScope.userNotFoundError != null}" >
- 			<div class="alert alert-danger text-center border border-danger">
+ 			<div class="alert alert-danger text-center border border-danger mb-0">
  				<b>${requestScope.userNotFoundError}</b>
  			</div>
  		</c:if>
  		
  		<!-- transfer to same account error -->
  		<c:if test="${requestScope.transError != null}" >
- 			<div class="alert alert-danger text-center border border-danger">
+ 			<div class="alert alert-danger text-center border border-danger mb-0">
  				<b>${requestScope.transError}</b>
  			</div>
  		</c:if>
  		
  		<!-- sending zero amount as deposit -->
  		<c:if test="${requestScope.zeroerror != null}" >
- 			<div class="alert alert-danger text-center border border-danger">
+ 			<div class="alert alert-danger text-center border border-danger mb-0">
  				<b>${requestScope.zeroerror}</b>
  			</div>
  		</c:if>
  		
  		<!-- failed to make deposit -->
  		<c:if test="${requestScope.failedmsg != null}" >
- 			<div class="alert alert-danger text-center border border-danger">
+ 			<div class="alert alert-danger text-center border border-danger mb-0">
  				<b>${requestScope.failedmsg}</b>
  			</div>
  		</c:if>
  		
  		<!-- insufficient funds -->
  		<c:if test="${requestScope.insufficientFunds != null}" >
- 			<div class="alert alert-danger text-center border border-danger">
+ 			<div class="alert alert-danger text-center border border-danger mb-0">
  				<b>${requestScope.insufficientFunds}</b>
  			</div>
  		</c:if>
  		
  		<!-- successful  -->
  		<c:if test="${requestScope.successmsg != null}" >
- 			<div class="alert alert-success text-center border border-success">
+ 			<div class="alert alert-success text-center border border-success mb-0">
  				<b>${requestScope.successmsg}</b>
  			</div>
  		</c:if>
@@ -124,12 +124,10 @@
             <div class="col-lg-3 order-1 order-md-1 cards">
               <div class="card info-card deposit-card">
                 <div class="card-body">
-                  <h5 class="card-title">Total Deposits</h5>
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon ">
-                      <img src="../assets/images/icons8_total_sales.ico" alt="">
-                    </div>
-                    <div class="ps-3">
+                 <img src="../assets/images/icons8_total_sales.ico" alt="">
+                 	 Total Deposits
+                  <div class="d-flex align-items-center"> 
+                    <div class="ps-1 mt-3">
                       <h6 class="totaldep">GH&#8373; ${totalDeps}</h6>
                     </div>
                   </div>
@@ -140,12 +138,10 @@
             <div class="col-lg-3 order-2 order-md-2 cards">
               <div class="card info-card withdrawal-card">
                 <div class="card-body">
-                  <h5 class="card-title">Total Withdrawals</h5>
+                <img src="../assets/images/icons8_withdrawal.ico" alt="">
+                  Total Withdrawals
                   <div class="d-flex align-items-center">
-                    <div class="card-icon ">
-                      <img src="../assets/images/icons8_withdrawal.ico" alt="">
-                    </div>
-                    <div class="ps-3">
+                    <div class="ps-1 mt-3">
                       <h6 class="totalwithd">GH&#8373; ${totalWithd}</h6>
                     </div>
                   </div>
@@ -156,12 +152,10 @@
             <div class="col-lg-3 order-3 order-md-3 cards">
               <div class="card info-card withdrawal-card">
                 <div class="card-body">
-                  <h5 class="card-title">Total transfers</h5>
+                	<img src="../assets/images/icons8_Credit_Card_Transfer.ico" alt="">
+                	  Total transfers
                   <div class="d-flex align-items-center">
-                    <div class="card-icon ">
-                      <img src="../assets/images/icons8_Credit_Card_Transfer.ico" alt="">
-                    </div>
-                    <div class="ps-3">
+                    <div class="ps-1 mt-3">
                       <h6 class="totalwithd">GH&#8373; ${totalTransfer}</h6>
                     </div>
                   </div>
@@ -172,12 +166,10 @@
             <div class="col-lg-3 order-4 order-md-4 cards">
               <div class="card info-card balance-card">
                 <div class="card-body">
-                  <h5 class="card-title">Balance</h5>
+                  <img src="../assets/images/icons8_Sales_Performance_Balance.ico" alt="">
+             		    Balance
                   <div class="d-flex align-items-center">
-                    <div class="card-icon ">
-                      <img src="../assets/images/icons8_Sales_Performance_Balance.ico" alt="">
-                    </div>
-                    <div class="ps-3">
+                    <div class="ps-1 mt-3">
                       <h6 class="bal">GH&#8373; ${totalAcctBal} </h6>
                     </div>
                   </div>
