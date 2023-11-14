@@ -1,7 +1,9 @@
 package com.welltech.globalcash.V21.globalcash.controller;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,14 +62,17 @@ public class AppController {
 		double totalWithdrawals = Math.abs(transactionHistoryRepo.getTotalWithdrawals(1,account.getAccount_id(),"success"));
 			
 		double totalTransfers= transferHistoryRepo.getTotalTransfers(account.getAccount_id(), "success");
-					
+
+		List<TransactionHistory> RecentTransactionList = transactionHistoryRepo.getRecentTransactions(account.getAccount_id());
+
 		//TODO: add objects to dashboard
 		getDashboardPage.addObject("userAcct", account);
 		getDashboardPage.addObject("totalAcctBal",totalAcctBalance);
 		getDashboardPage.addObject("totalDeps",totalDeposits);
 		getDashboardPage.addObject("totalWithd",totalWithdrawals);
 		getDashboardPage.addObject("totalTransfer",totalTransfers);
-		
+		getDashboardPage.addObject("recentTransactions",RecentTransactionList);
+
 		return getDashboardPage;
 	}
 }

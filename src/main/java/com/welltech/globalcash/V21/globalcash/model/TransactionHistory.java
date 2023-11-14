@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
@@ -16,6 +17,8 @@ public class TransactionHistory {
 	@Id
 	private int transaction_id;
 	private int account_id;
+	@Transient
+	private String account_number;
 	@NotEmpty
 	private String transaction_type;
 	private double amount;
@@ -55,6 +58,14 @@ public class TransactionHistory {
 
 	public void setAccount_id(int account_id) {
 		this.account_id = account_id;
+	}
+
+	public String getAccount_number() {
+		return account_number;
+	}
+
+	public void setAccount_number(String account_number) {
+		this.account_number = account_number;
 	}
 
 	public String getTransaction_type() {

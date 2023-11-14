@@ -1,7 +1,9 @@
 package com.welltech.globalcash.V21.globalcash.repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -34,4 +36,8 @@ public interface TransferHistoryRepo extends CrudRepository<TransferHistory,Inte
 	@Transactional
 	Double getTotalTransfers(@Param("account_id")Integer account_id,
 							 @Param("status")String status);
+
+	@Query(value="SELECT * FROM v_transaction_history WHERE account_id=:account_id ORDER BY created_at DESC limit 5", nativeQuery = true)
+	@Transactional
+	List<TransferHistory> getRecentTransfers(@Param("account_id")Integer account_id);
 }
