@@ -47,4 +47,8 @@ public interface AccountRepository extends CrudRepository<Account,Integer>{
 	@Transactional
 	Integer updateAcctBalance(@Param("new_account_balance")double new_account_balance,
 							  @Param("account_id")int account_id);
+
+	@Query(value="SELECT phone FROM users WHERE user_id= :user_id", nativeQuery=true )
+	@Transactional
+	String getRecipientNumber(@Param("user_id")int user_id);
 }

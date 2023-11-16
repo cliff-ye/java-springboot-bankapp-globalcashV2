@@ -78,6 +78,7 @@ public class AuthController {
 		//set session
 		session.setAttribute("userLoggedIn",user);
 		session.setAttribute("token",token);
+		//session.setAttribute("authenticated",true);
 		
 		//System.out.print(session.getAttribute("userLoggedIn"));
 		

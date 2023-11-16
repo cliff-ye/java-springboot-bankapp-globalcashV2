@@ -33,4 +33,13 @@ public class AlertController {
 		return "loggedout-success";
 	}
 
+	@GetMapping("/show-gc-trans-success")
+	public String showGcAlert() {
+		return "gc-trans-success";
+	}
+
+	@GetMapping("/show-trans-success")
+	public String showTransAlert() {
+		return "trans-success";
+	}
 }

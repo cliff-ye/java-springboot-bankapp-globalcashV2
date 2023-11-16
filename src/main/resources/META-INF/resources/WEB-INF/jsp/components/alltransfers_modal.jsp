@@ -6,7 +6,7 @@
 
    <section class="mt-5">
          <form action="">
-           <h2>All Money Transfers</h2>
+           <h2>Recent Money Transfers</h2>
  
            <table class="table">
              <thead>
@@ -22,12 +22,18 @@
                </tr>
              </thead>
              <tbody class="tbody">
-
-               <!-- <tr>
-                   <th scope="row"></th>
-                   <td></td>
-                   <td></td>
-                 </tr> -->
+                <c:forEach items="${requestScope.recentTransfers}" var="recent_transfer">
+                  <tr>
+                   <td>${recent_transfer.transfer_id}</td>
+                   <td>${recent_transfer.receipient_acc_no}</td>
+                   <td>${recent_transfer.receipient_acc_name}</td>
+                   <td>${recent_transfer.amount}</td>
+                   <td>${recent_transfer.transfer_ref}</td>
+                   <td>${recent_transfer.status}</td>
+                   <td>${recent_transfer.status_detail}</td>
+                   <td>${recent_transfer.transferred_at}</td>
+                 </tr>
+                 </c:forEach>
              </tbody>
            </table>
          </form>

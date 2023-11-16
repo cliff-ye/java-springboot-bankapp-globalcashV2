@@ -41,4 +41,6 @@ public interface UserRepository extends CrudRepository<User, Integer>{
 	    @Query(value="SELECT * FROM users WHERE email= :email", nativeQuery=true )
 	    @Transactional
 		User getUserDetails(@Param("email")String email);
+
+
 }

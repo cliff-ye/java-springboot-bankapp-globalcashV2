@@ -12,9 +12,8 @@
             <option value="">--Select Transaction Type --</option>
             <!-- <option value="payment">Payment</option> -->
             <option value="transfer">Transfer to GC user</option>
-            <option value="transfer-nongc">Transfer to non GC user</option>
+            <option value="transferMomo">Transfer to Momo user</option>
             <option value="airtime">Airtime</option>
-            <option value="bank-trans">Bank transfer</option>
             <option value="deposit">Deposit</option>
             <option value="withdraw">Withdraw</option>
           </select>
@@ -23,11 +22,18 @@
        <!-- TRANSFER MONEY CARD DISPLAYS HERE -->
 		<c:import url="components/transact-forms/transfer_form.jsp" />
 
+		<!-- TRANSFER TO MOMO ACCOUNT -->
+		<c:import url="components/transact-forms/transfer_momo_form.jsp" />
+
+		<!-- BUY AIRTIME -->
+        <c:import url="components/transact-forms/airtime_form.jsp" />
+
         <!-- DEPOSIT CARD DISPLAYS HERE -->
 		<c:import url="components/transact-forms/deposit_form.jsp" />
 		
 		<!-- WITHDRAWAL CARD DISPLAYS HERE -->
 		<c:import url="components/transact-forms/withdraw_form.jsp" />
+
 
       </div>
     

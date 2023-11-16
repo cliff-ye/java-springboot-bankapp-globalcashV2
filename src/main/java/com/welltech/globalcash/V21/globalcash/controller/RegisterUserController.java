@@ -3,6 +3,8 @@ package com.welltech.globalcash.V21.globalcash.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.welltech.globalcash.V21.globalcash.helper.SMS;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -23,7 +25,9 @@ import jakarta.validation.Valid;
 public class RegisterUserController {
 	
 	private UserRepository userRepository;
-	
+	@Autowired
+	private SMS sms;
+
 	//autowire via constructor
 	public RegisterUserController(UserRepository userRepository) {
 		this.userRepository = userRepository;
@@ -41,7 +45,8 @@ public class RegisterUserController {
 		
 		ModelAndView regPage = new ModelAndView("register-user");
 		ModelAndView loginPage = new ModelAndView("login");
-		
+		ModelAndView alertsuccess = new ModelAndView("reg-success");
+
 		if(result.hasErrors() && confirm_password.isEmpty()) {
 			model.put("message", result.getAllErrors());
 			regPage.addObject("confirm_pass","field cannot be empty");
@@ -63,13 +68,15 @@ public class RegisterUserController {
 		
 		//TODO : REGISTER USER
 		int res = userRepository.addUser(user.getFirst_name(), user.getLast_name(), user.getPhone(), user.getEmail(), hashed_password,createdAt);
-	
+
 		//TODO : CHECK IF IT WENT TO INTO DB
 		if(res == 1) {
-			//: SUCCESS MSG
-		//	String msg = "Registered successfully. Proceed to login";
-			//loginPage.addObject("successmessage", msg);
-			return new ModelAndView("reg-success");
+			//SUCCESS MSG
+			String msg = "Registered successfully. Proceed to login";
+			loginPage.addObject("successmessage", msg);
+//			String message2 = "Dear "+user.getFirst_name()+",\nYou have successfully registered with global cash. Login to add an account and Enjoy Global banking experience with globalcash";
+//			sms.sendSMS(user.getPhone(), message2);
+			return loginPage;
 		}
 		else {
 			//FAILED MSG

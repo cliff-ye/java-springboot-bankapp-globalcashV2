@@ -4,6 +4,8 @@ const featuresBtn = document.querySelector(".feature--btn");
 const overlay = document.querySelector(".overlay");
 const transactType = document.querySelector("#transact-type");
 const transferCard = document.querySelector(".transfer-card");
+const transferMomoCard = document.querySelector(".transfer-momo-card");
+const airtimeCard = document.querySelector(".airtime-card");
 const depositCard = document.querySelector(".dep-card");
 const withdrawCard = document.querySelector(".withdraw-card");
 const accountModal = document.querySelector(".accountModal");
@@ -68,24 +70,49 @@ transactType.addEventListener("change", function (e) {
   switch (transactType.value) {
     case "":
       transferCard.classList.add("hidden");
+      transferMomoCard.classList.add("hidden");
+      airtimeCard.classList.add("hidden");
       depositCard.classList.add("hidden");
       withdrawCard.classList.add("hiddden");
       break;
 
     case "transfer":
       transferCard.classList.remove("hidden");
+      transferMomoCard.classList.add("hidden");
+      airtimeCard.classList.add("hidden");
       depositCard.classList.add("hidden");
       withdrawCard.classList.add("hidden");
       break;
 
+    case "transferMomo":
+        transferCard.classList.add("hidden");
+        transferMomoCard.classList.remove("hidden");
+        airtimeCard.classList.add("hidden");
+        depositCard.classList.add("hidden");
+        withdrawCard.classList.add("hidden");
+        break;
+
+     case "airtime":
+        transferCard.classList.add("hidden");
+        transferMomoCard.classList.add("hidden");
+        airtimeCard.classList.remove("hidden");
+        depositCard.classList.add("hidden");
+        withdrawCard.classList.add("hidden");
+        break;
+
+
     case "deposit":
       transferCard.classList.add("hidden");
+      transferMomoCard.classList.add("hidden");
+      airtimeCard.classList.add("hidden");
       depositCard.classList.remove("hidden");
       withdrawCard.classList.add("hidden");
       break;
 
     case "withdraw":
       transferCard.classList.add("hidden");
+      transferMomoCard.classList.add("hidden");
+      airtimeCard.classList.add("hidden");
       depositCard.classList.add("hidden");
       withdrawCard.classList.remove("hidden");
       break;

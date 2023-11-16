@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
+import com.welltech.globalcash.V21.globalcash.model.TransferHistory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -63,7 +64,8 @@ public class AppController {
 			
 		double totalTransfers= transferHistoryRepo.getTotalTransfers(account.getAccount_id(), "success");
 
-		List<TransactionHistory> RecentTransactionList = transactionHistoryRepo.getRecentTransactions(account.getAccount_id());
+		List<TransactionHistory> recentTransactionList = transactionHistoryRepo.getRecentTransactions(account.getAccount_id());
+		List<TransferHistory> recentTransferList = transferHistoryRepo.getRecentTransfers(account.getAccount_id());
 
 		//TODO: add objects to dashboard
 		getDashboardPage.addObject("userAcct", account);
@@ -71,8 +73,8 @@ public class AppController {
 		getDashboardPage.addObject("totalDeps",totalDeposits);
 		getDashboardPage.addObject("totalWithd",totalWithdrawals);
 		getDashboardPage.addObject("totalTransfer",totalTransfers);
-		getDashboardPage.addObject("recentTransactions",RecentTransactionList);
-
+		getDashboardPage.addObject("recentTransactions",recentTransactionList);
+		getDashboardPage.addObject("recentTransfers",recentTransferList);
 		return getDashboardPage;
 	}
 }
