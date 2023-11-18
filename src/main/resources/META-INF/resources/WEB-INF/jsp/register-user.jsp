@@ -50,13 +50,13 @@
         <div class="row">
 	        <div class="col mb-3">
 	          <form:label path="first_name" class="form-label">Firstname*</form:label>
-	          <form:input type="text" path="first_name" class="form-control inputlook input--firstname" required="required" />   
+	          <form:input type="text" path="first_name" class="form-control inputlook input--firstname" pattern="[a-zA-Z]*" required="required" />
 	          <form:errors path="first_name" cssClass="text-danger" />
 	        </div>
 	
 	        <div class="col mb-3">
 	          <form:label path="last_name" class="form-label">Lastname*</form:label>
-	          <form:input type="text" path="last_name" class="form-control inputlook input--lastname" required="required" />
+	          <form:input type="text" path="last_name" class="form-control inputlook input--lastname" pattern="[a-zA-Z]*" required="required" />
 	          <form:errors path="last_name" cssClass="text-danger" />
 	        </div>
       </div>
@@ -64,7 +64,7 @@
       <div class="row">
 	      <div class="col mb-3">
 	          <form:label path="phone" class="form-label">Phone*</form:label>
-	          <form:input type="text" path="phone" class="form-control inputlook input--phone" required="required" />
+	          <form:input type="number" path="phone" class="form-control inputlook input--phone" required="required" />
 	          <form:errors path="phone" cssClass="text-danger" />
 	        </div>
 	

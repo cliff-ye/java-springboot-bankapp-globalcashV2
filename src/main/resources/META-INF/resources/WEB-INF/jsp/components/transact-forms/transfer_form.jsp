@@ -10,7 +10,7 @@
                 <form action="/transact/transfer" method="post">
                 <div class="form-group mb-2">
                    <label for="">Account Number</label>
-                   <input type="text" name="accountHolder" class="form-control inputlook" required="required">
+                   <input type="number" name="accountHolder" class="form-control inputlook" required="required">
                 </div>
 
                 <div class="form-group mb-2">
@@ -20,7 +20,7 @@
 
                <div class="form-group mb-3">
                 <label for="">Enter Amount(GH&#8373;)</label>
-                <input type="text" name="transfer_amount" class="form-control inputlook" required="required">
+                <input type="number" name="transfer_amount" class="form-control inputlook" required="required">
              </div>
 
              <div class="form-group">

@@ -10,11 +10,11 @@
             <form action="/transact/airtime" method="POST">
             <div class="form-group mb-2">
                <label for="">Mobile Number</label>
-               <input type="text" name="mobileNumber" class="form-control inputlook" required="required">
+               <input type="number" name="mobileNumber" class="form-control inputlook" required="required">
              </div>
             <div class="form-group mb-3">
                <label for="">Enter Amount(GH&#8373;)</label>
-               <input type="text" name="amount" class="form-control inputlook" required="required">
+               <input type="number" name="amount" class="form-control inputlook" required="required">
             </div>
 
          <div class="form-group ">

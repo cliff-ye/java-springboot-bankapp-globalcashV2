@@ -34,7 +34,5 @@
          </form>
 
      </section>
-      <div>
-           <button class="btn--look">view all transactions</button>
-         </div>
+
    </div>

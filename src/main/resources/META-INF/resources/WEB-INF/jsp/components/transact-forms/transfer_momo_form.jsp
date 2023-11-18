@@ -10,7 +10,7 @@
                 <form action="/transact/transfer-momo" method="post">
                 <div class="form-group mb-2">
                    <label for="">Mobile Number</label>
-                   <input type="text" name="mobNumber" class="form-control inputlook" required="required">
+                   <input type="number" name="mobNumber" class="form-control inputlook" required="required">
                 </div>
 
                 <div class="form-group mb-2">

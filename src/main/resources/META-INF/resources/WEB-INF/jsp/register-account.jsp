@@ -46,8 +46,8 @@
         </h1>
        
         <div class="mb-3">
-          <form:label path="account_name" class="form-label">Account Name*</form:label>
-          <form:input path="account_name" type="text" class="form-control inputlook input--accountName" required="required"/>
+          <form:label path="account_name" class="form-label" >Account Name*</form:label>
+          <form:input path="account_name" type="text" class="form-control inputlook input--accountName" pattern="[a-zA-Z ]*" required="required"/>
           <form:errors path="account_name" cssClass="text-danger"/>
         </div>
 
