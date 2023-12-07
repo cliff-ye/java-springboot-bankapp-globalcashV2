@@ -3,6 +3,7 @@ package com.welltech.globalcash.V21.globalcash.controller;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.welltech.globalcash.V21.globalcash.helper.NumberFormatter;
 import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import com.welltech.globalcash.V21.globalcash.model.TransferHistory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,10 +70,10 @@ public class AppController {
 
 		//TODO: add objects to dashboard
 		getDashboardPage.addObject("userAcct", account);
-		getDashboardPage.addObject("totalAcctBal",totalAcctBalance);
-		getDashboardPage.addObject("totalDeps",totalDeposits);
-		getDashboardPage.addObject("totalWithd",totalWithdrawals);
-		getDashboardPage.addObject("totalTransfer",totalTransfers);
+		getDashboardPage.addObject("totalAcctBal", NumberFormatter.formatNum(totalAcctBalance));
+		getDashboardPage.addObject("totalDeps",NumberFormatter.formatNum(totalDeposits));
+		getDashboardPage.addObject("totalWithd",NumberFormatter.formatNum(totalWithdrawals));
+		getDashboardPage.addObject("totalTransfer",NumberFormatter.formatNum(totalTransfers));
 		getDashboardPage.addObject("recentTransactions",recentTransactionList);
 		getDashboardPage.addObject("recentTransfers",recentTransferList);
 		return getDashboardPage;

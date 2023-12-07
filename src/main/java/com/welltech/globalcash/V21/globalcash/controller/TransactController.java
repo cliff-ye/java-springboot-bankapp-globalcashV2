@@ -3,18 +3,16 @@ package com.welltech.globalcash.V21.globalcash.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import com.welltech.globalcash.V21.globalcash.services.SmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.welltech.globalcash.V21.globalcash.helper.SMS;
 import com.welltech.globalcash.V21.globalcash.model.Account;
-import com.welltech.globalcash.V21.globalcash.model.TransactionHistory;
 import com.welltech.globalcash.V21.globalcash.model.User;
 import com.welltech.globalcash.V21.globalcash.repository.AccountRepository;
 import com.welltech.globalcash.V21.globalcash.repository.TransactionHistoryRepo;
@@ -33,7 +31,7 @@ public class TransactController {
 	@Autowired
 	private TransferHistoryRepo transferHistoryRepo;
 	@Autowired
-	private SMS sms;
+	private SmsService smsService;
 
 	
 	public TransactController(AccountRepository accountRepository,TransactionHistoryRepo transactionHistoryRepo,
@@ -41,7 +39,7 @@ public class TransactController {
 		this.accountRepository = accountRepository;
 		this.transactionHistoryRepo=transactionHistoryRepo;
 		this.transferHistoryRepo=transferHistoryRepo;
-		this.sms = sms;
+		this.smsService = smsService;
 	}
 	
 	LocalDateTime createdAt= LocalDateTime.now();
@@ -83,7 +81,7 @@ public class TransactController {
 		}
 
 		String message = "Hi "+user.getFirst_name()+"\nYour account has been credited GHS "+deposit_amount+"\nDate: "+createdAt.format(format)+"\nBal: GHS "+new_balance;
-		sms.sendSMS(user.getPhone(), message);
+		smsService.sendSms(user.getPhone(), message);
 		
 		int logResult = transactionHistoryRepo.logTransaction(account.getAccount_id(), "deposit", deposit_amount, "success", "deposited successfully", createdAt);
 		
@@ -151,7 +149,7 @@ public class TransactController {
 
 		String sender_phone =  accountRepository.getRecipientNumber(receipient_account.getUser_id());
 		String message = "Hi "+receipient_account.getAccount_name()+"\nYou have received GHS "+trans_amount+" from "+sender_account.getAccount_name()+"\nDate: "+createdAt.format(format)+"\nCurrent Bal: GHS "+recipient_new_bal;
-		sms.sendSMS(sender_phone, message);
+		smsService.sendSms(sender_phone, message);
 
 		transferHistoryRepo.logTransfers(sender_account.getAccount_id(), receipient_account.getAccount_name(), receipient_account.getAccount_number(), trans_amount, reference, "success", "Transfer successful", createdAt);
 		
@@ -208,7 +206,7 @@ public class TransactController {
 
 		String user_phone = user.getPhone();
 		String message = "Hi "+user.getFirst_name()+"\nYour account has been debited GHS "+withdrawalAmt+"\nDate: "+createdAt.format(format)+"\nBal: GHS "+new_balance;
-		sms.sendSMS(user_phone, message);
+		smsService.sendSms(user_phone, message);
 			
 		transactionHistoryRepo.logTransaction(account.getAccount_id(), "withdrawal", -withdrawalAmt, "success", "withdrawal successful", createdAt);
 		
@@ -256,7 +254,7 @@ public class TransactController {
 
 		//recipient message
 		String message2 = "Hello, You have received GHS "+airtime_amount+" AIRTIME from "+user.getPhone()+"\nDate: "+createdAt.format(format)+"\nGlobal cash";
-		sms.sendSMS(phone, message2);
+		smsService.sendSms(phone, message2);
 
 		transactionHistoryRepo.logTransaction(account.getAccount_id(), "Airtime", airtime_amount, "success", "Airtime purchase successful", createdAt);
 
@@ -309,7 +307,7 @@ public class TransactController {
 		accountRepository.updateAcctBalance(sender_new_acct_bal,sender_account.getAccount_id());
 
 		String message2 = "Hello, You have received GHS "+trans_amount+" from "+sender_account.getAccount_name()+"\nDate: "+createdAt.format(format)+"\nGlobal cash";
-		sms.sendSMS(phone, message2);
+		smsService.sendSms(phone, message2);
 
 		transferHistoryRepo.logTransfers(sender_account.getAccount_id(), phone,phone, trans_amount, reference, "success", "Transfer successful", createdAt);
 

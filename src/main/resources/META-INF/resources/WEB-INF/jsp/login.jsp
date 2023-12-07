@@ -63,12 +63,12 @@
               
               <div class="mb-1">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control inputlook input--username" id="email" name="email"/>
+                <input type="email" class="form-control inputlook input--username" id="email" name="email" autocomplete="off"/>
               </div>
       
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control inputlook input--password" id="password" name="password"/>
+                <input type="password" class="form-control inputlook input--password" id="password" name="password" autocomplete="off"/>
               </div>
               
         		<input type="hidden" id="token" name="token" value="${token}" />	

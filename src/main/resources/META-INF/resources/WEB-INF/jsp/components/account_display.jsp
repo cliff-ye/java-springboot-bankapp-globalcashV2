@@ -33,5 +33,7 @@
               <!-- end account card body-->
           </div>
       <!-- end of account card -->
+             <a class="btn btn-primary btn--look" href="#">Request Statement of Account</a>
+
       </div>
 </div>

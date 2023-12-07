@@ -3,7 +3,7 @@ package com.welltech.globalcash.V21.globalcash.controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import com.welltech.globalcash.V21.globalcash.helper.SMS;
+import com.welltech.globalcash.V21.globalcash.services.SmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.welltech.globalcash.V21.globalcash.model.User;
 import com.welltech.globalcash.V21.globalcash.repository.UserRepository;
 
-import ch.qos.logback.core.model.Model;
 import jakarta.validation.Valid;
 
 @Controller
@@ -26,7 +25,7 @@ public class RegisterUserController {
 	
 	private UserRepository userRepository;
 	@Autowired
-	private SMS sms;
+	private SmsService sms;
 
 	//autowire via constructor
 	public RegisterUserController(UserRepository userRepository) {

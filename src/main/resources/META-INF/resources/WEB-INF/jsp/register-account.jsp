@@ -47,7 +47,7 @@
        
         <div class="mb-3">
           <form:label path="account_name" class="form-label" >Account Name*</form:label>
-          <form:input path="account_name" type="text" class="form-control inputlook input--accountName" pattern="[a-zA-Z ]*" required="required"/>
+          <form:input path="account_name" type="text" class="form-control inputlook input--accountName" pattern="[a-zA-Z ]*" required="required" autocomplete="off"/>
           <form:errors path="account_name" cssClass="text-danger"/>
         </div>
 
@@ -55,7 +55,7 @@
          <form:label path="account_type">Select Account Type*</form:label><br>
           <form:select path="account_type" class="form-control inputlook">
             <form:option path="account_type" value="">-- Select Account Type --</form:option>
-            <form:option path="account_type" value="check">Cheque</form:option>
+            <form:option path="account_type" value="current">Current</form:option>
             <form:option path="account_type" value="savings">Savings</form:option>
             <form:option path="account_type" value="business">Business</form:option>
           </form:select>
