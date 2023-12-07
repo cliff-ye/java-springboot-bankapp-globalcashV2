@@ -58,7 +58,8 @@ public class RegisterAccountController {
 		//TODO : Date time
 		// DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime createdAt= LocalDateTime.now();
-        
+		account.setAccount_name(user.getFirst_name()+" "+user.getLast_name());
+
         //TODO : ADD ACCOUNT
         int res = accountRepository.addAccount(user.getUser_id(),setAcctNumber,account.getAccount_name(),account.getAccount_type(),account.getAccount_balance(),createdAt);
 		String message2 = "Your global cash account number : "+setAcctNumber+"\nEnjoy Global banking experience with globalcash";

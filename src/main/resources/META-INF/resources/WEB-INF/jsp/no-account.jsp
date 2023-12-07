@@ -35,7 +35,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 mb-3 d-flex justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
-                <h1> No Account</h1>
+                <h1> Activate Account</h1>
           </div>
 
           </div>
@@ -47,7 +47,7 @@
 
           <div class="row">
             <div class="col-lg-12 d-flex justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
-                <a href="/reg-acct" class="btn-get-started scrollto">Add Account</a>
+                <a href="/reg-acct" class="btn-get-started scrollto">Activate</a>
           </div>
           <div class="col-lg-12 d-flex justify-content-center pt-4 pt-lg-0 order-2 order-lg-1">
                 <a href="/logout-user" class="btn-get-started scrollto">Logout</a>
